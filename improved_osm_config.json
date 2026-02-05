@@ -1,0 +1,98 @@
+{
+  "description": "Improved OSM Training Configuration - Addresses Low Diversity Issue",
+
+  "training": {
+    "num_games": 1000000,
+    "comment_num_games": "10x increase from 100k - more diverse opponent scenarios",
+
+    "epochs": 200,
+    "comment_epochs": "2x increase from 100 - longer training for convergence",
+
+    "batch_size": 256,
+    "comment_batch_size": "Increased from 128 - better gradient estimates",
+
+    "learning_rate": 0.0005,
+    "comment_lr": "Reduced from 0.001 - more stable convergence",
+
+    "validation_split": 0.15,
+    "comment_validation": "Monitor diversity and prevent overfitting"
+  },
+
+  "data_augmentation": {
+    "enabled": true,
+    "comment": "Add noise and variations to increase diversity",
+
+    "action_noise": 0.1,
+    "comment_action_noise": "Randomly perturb 10% of actions",
+
+    "feature_noise": 0.05,
+    "comment_feature_noise": "Add small noise to style features",
+
+    "shuffle_opponents": true,
+    "comment_shuffle": "Randomize opponent matchups"
+  },
+
+  "opponent_diversity": {
+    "min_different_opponents": 50,
+    "comment_min": "Ensure at least 50 unique opponent styles in training",
+
+    "style_ranges": {
+      "vpip": [0.15, 0.50],
+      "pfr": [0.10, 0.30],
+      "afq": [0.30, 0.60],
+      "wtsd": [0.15, 0.35]
+    },
+    "comment_ranges": "Expected ranges for each feature - enforce during data generation"
+  },
+
+  "regularization": {
+    "dropout": 0.2,
+    "comment_dropout": "Increased from 0.1 - prevent overfitting",
+
+    "weight_decay": 0.0001,
+    "comment_weight_decay": "L2 regularization",
+
+    "diversity_loss_weight": 0.1,
+    "comment_diversity": "Penalty for predicting too similar values"
+  },
+
+  "monitoring": {
+    "log_interval": 100,
+    "save_interval": 1000,
+    "validation_interval": 500,
+
+    "metrics_to_track": [
+      "train_loss",
+      "val_loss",
+      "prediction_std_dev",
+      "prediction_range",
+      "feature_correlation"
+    ]
+  },
+
+  "checkpoints": {
+    "save_best": true,
+    "save_last": true,
+    "save_dir": "checkpoints_improved/osm",
+    "metric_to_monitor": "prediction_std_dev",
+    "comment_metric": "Higher std dev = more diversity = better"
+  },
+
+  "expected_improvements": {
+    "diversity_score": {
+      "current": 0.3,
+      "target": 15.0,
+      "comment": "50x improvement expected"
+    },
+    "range_usage": {
+      "current": 1.8,
+      "target": 50.0,
+      "comment": "28x improvement expected"
+    },
+    "overall_quality": {
+      "current": 22.6,
+      "target": 70.0,
+      "comment": "3x improvement expected"
+    }
+  }
+}

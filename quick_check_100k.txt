@@ -1,0 +1,25 @@
+
+======================================================================
+QUICK QUALITY CHECK: checkpoints_improved/amp3_checkpoint_100000.pt
+======================================================================
+
+Loading checkpoint...
+✓ Checkpoint from episode 99999
+
+Initializing models...
+✓ Actor parameters: 1,028,068
+✓ Critic parameters: 1,010,273
+
+Testing with 1000 random game states...
+Traceback (most recent call last):
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/quick_quality_check.py", line 181, in <module>
+    results = quick_quality_check(checkpoint_path, num_tests=1000)
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/quick_quality_check.py", line 57, in quick_quality_check
+    action_logits = actor(
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/amp3_network.py", line 319, in forward
+    combined = torch.cat([
+RuntimeError: Tensors must have same number of dimensions: got 2 and 1

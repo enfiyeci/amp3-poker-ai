@@ -1,0 +1,66 @@
+
+======================================================================
+AMP3 PERFORMANCE TEST: 500 Games
+======================================================================
+
+Loading checkpoint...
+✓ Episode 100,000
+✓ Progress: 83.3%
+✓ Actor parameters: 1,028,068
+✓ Environment initialized
+
+Playing 500 games against baseline opponent...
+(Baseline strategy: 70% call, 20% raise, 10% fold)
+
+
+⚠️ Error in game 0: 'GameState' object has no attribute 'stacks'
+
+⚠️ Error in game 1: 'GameState' object has no attribute 'stacks'
+
+⚠️ Error in game 2: 'GameState' object has no attribute 'stacks'
+  Games 100/500 | WR:   0.0% | Avg:    +0.0 chips
+  Games 200/500 | WR:   0.0% | Avg:    +0.0 chips
+  Games 300/500 | WR:   0.0% | Avg:    +0.0 chips
+  Games 400/500 | WR:   0.0% | Avg:    +0.0 chips
+  Games 500/500 | WR:   0.0% | Avg:    +0.0 chips
+
+======================================================================
+PERFORMANCE RESULTS
+======================================================================
+
+Games Played:  500
+  Won:           0 (  0.0%)
+  Lost:          0 (  0.0%)
+  Tie:         500 (100.0%)
+
+Profitability:
+  Total reward:    +0 chips
+  Average reward:  +0.00 chips/game
+  BB/100:          +0.00
+
+Action Distribution:
+  FOLD    :     0 (  0.0%) 
+  CALL    :     0 (  0.0%) 
+  BET     :     0 (  0.0%) 
+  ALL_IN  :     0 (  0.0%) 
+
+Decisions by Street:
+  PREFLOP :   446 (100.0%)
+  FLOP    :     0 (  0.0%)
+  TURN    :     0 (  0.0%)
+  RIVER   :     0 (  0.0%)
+
+Errors encountered: 446 (89.2%)
+
+======================================================================
+ASSESSMENT
+======================================================================
+
+⚠️  NEEDS IMPROVEMENT - Below baseline performance
+⚠️ Slightly unprofitable
+
+======================================================================
+
+Test complete!
+Win Rate: 0.0%
+BB/100: +0.00

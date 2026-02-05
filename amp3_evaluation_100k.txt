@@ -1,0 +1,69 @@
+
+======================================================================
+AMP3 MODEL INPUT/OUTPUT STRUCTURE
+======================================================================
+
+ACTOR NETWORK INPUTS:
+  1. personal        (batch, 8)   - Hole cards + stack/pot/bet info
+  2. public          (batch, 22)  - Community cards + all stacks/bets
+  3. position        (batch, 6)   - One-hot position (0-5)
+  4. action_history  (seq, batch, 2) - Past actions sequence
+  5. style_features  (batch, 24)  - Opponent style profiles (6 players × 4)
+
+ACTOR NETWORK OUTPUT:
+  • action_logits    (batch, 4)   - [FOLD, CALL, RAISE_SMALL, RAISE_LARGE]
+  • action_probs     (batch, 4)   - Softmax probabilities
+  • predicted_action (int)        - Argmax of logits
+
+----------------------------------------------------------------------
+
+CRITIC NETWORK INPUTS:
+  1. all_holes       (batch, 24)  - All players' hole cards
+  2. public          (batch, 22)  - Community cards + stacks/bets
+  3. position        (batch, 6)   - One-hot position
+  4. action_history  (seq, batch, 2) - Past actions sequence
+
+CRITIC NETWORK OUTPUT:
+  • value            (batch, 1)   - Estimated state value
+
+======================================================================
+
+
+======================================================================
+EVALUATING AMP3: checkpoints_improved/amp3_checkpoint_100000.pt
+======================================================================
+
+Checkpoint: Episode 100,000
+Progress: 83.3%
+
+Actor: 1,028,068 parameters
+Critic: 1,010,273 parameters
+Total: 2,038,341 parameters
+
+======================================================================
+TESTING 5 EXAMPLE SCENARIOS
+======================================================================
+
+
+──────────────────────────────────────────────────────────────────────
+EXAMPLE 1: Random Game State
+──────────────────────────────────────────────────────────────────────
+
+INPUTS:
+  personal:       shape=(1, 8), mean=-0.197
+  public:         shape=(1, 22), mean=0.095
+  position:       [1.0, 0.0, 0.0, 0.0, 0.0, 0.0] (player 0)
+  action_history: shape=(3, 1, 2)
+  style_features: shape=(1, 24)
+Traceback (most recent call last):
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/evaluate_amp3_proper.py", line 275, in <module>
+    evaluate_amp3_with_examples(checkpoint_path, num_examples=5)
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/evaluate_amp3_proper.py", line 105, in evaluate_amp3_with_examples
+    action_logits = actor(
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/amp3_network.py", line 319, in forward
+    combined = torch.cat([
+RuntimeError: Sizes of tensors must match except in dimension 1. Expected size 1 but got size 3 for tensor number 4 in the list.

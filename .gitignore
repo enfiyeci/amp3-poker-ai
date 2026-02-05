@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+.claude/
+checkpoints_20hr/
+checkpoints_test/
+amp3_checkpoints/
+checkpoints_mac_mini/
+*.log
+Pool_Fusball League/
+poker_amp3_preflop_demo/

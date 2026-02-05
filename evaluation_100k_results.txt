@@ -1,0 +1,15 @@
+
+======================================================================
+EVALUATING AMP3 CHECKPOINT: checkpoints_improved/amp3_checkpoint_100000.pt
+======================================================================
+
+Loading checkpoint...
+✓ Loaded checkpoint from episode 99999
+Initializing AMP3 agent...
+Built style library with 22 strategies
+Traceback (most recent call last):
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/evaluate_amp3_checkpoint.py", line 166, in <module>
+    results = evaluate_checkpoint(checkpoint_path, num_games=1000)
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/evaluate_amp3_checkpoint.py", line 29, in evaluate_checkpoint
+    agent = AMP3Agent(style_library=style_library)
+TypeError: __init__() got an unexpected keyword argument 'style_library'

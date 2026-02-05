@@ -1,0 +1,3 @@
+Usage:
+  python3 evaluate_all_models.py amp3 <checkpoint_path>
+  python3 evaluate_all_models.py streets <checkpoint_path>

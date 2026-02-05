@@ -1,0 +1,9 @@
+{
+  "amp3_episodes": 120000,
+  "amp3_batch_size": 256,
+  "amp3_replay_capacity": 100000,
+  "amp3_lr": 0.0001,
+  "amp3_gamma": 0.99,
+  "amp3_update_freq": 4,
+  "amp3_log_freq": 1000
+}

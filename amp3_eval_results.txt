@@ -1,0 +1,36 @@
+
+======================================================================
+Evaluating AMP3 Agent: checkpoints_20hr/amp3_checkpoint_40000.pt
+======================================================================
+
+Checkpoint loaded from episode: 39999
+✓ Loaded actor and critic weights
+Built style library with 22 strategies
+
+Simulating 1000 heads-up games...
+Traceback (most recent call last):
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/evaluate_all_models.py", line 272, in <module>
+    evaluate_amp3_agent(checkpoint_path, num_games=1000)
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/evaluate_all_models.py", line 78, in evaluate_amp3_agent
+    action_enum, amount, log_prob = agent.get_action(
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/amp3_network.py", line 573, in get_action
+    action_idx, log_prob = self.actor.get_action(
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/amp3_network.py", line 334, in get_action
+    probs = self.get_action_probs(**kwargs)
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/amp3_network.py", line 329, in get_action_probs
+    logits = self.forward(**kwargs)
+  File "/Users/ardaenfiyeci/Downloads/amp3_full/amp3_network.py", line 309, in forward
+    public_enc = self.public_encoder(public)
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/container.py", line 244, in forward
+    input = module(input)
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/ardaenfiyeci/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (1x14 and 22x128)
