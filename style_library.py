@@ -23,12 +23,19 @@ from poker_core import (
 
 
 class PlayerType(IntEnum):
-    """Player types from the paper"""
-    CONSERVATIVE = 0  # Bet only with very strong hands
-    REGULAR = 1       # Bet with strong hands, fold with weak
-    AGGRESSIVE = 2    # Bet with slightly strong hands
-    BLUFFING = 3      # Sometimes bet with weak hands
-    DECEPTIVE = 4     # Call with strong hands to trap
+    """Expanded player types"""
+    CONSERVATIVE = 0   # Bet only with very strong hands
+    REGULAR = 1        # Bet with strong hands, fold with weak
+    AGGRESSIVE = 2     # Bet with slightly strong hands
+    BLUFFING = 3       # Sometimes bet with weak hands
+    DECEPTIVE = 4      # Call with strong hands to trap
+
+    # New additions for more diversity
+    MANIAC = 5         # Extremely aggressive, raises constantly
+    ROCK = 6           # Ultra tight, only plays premium hands
+    CALLING_STATION = 7 # Rarely folds, calls too much
+    TAG = 8            # Tight-Aggressive (classic strong player)
+    LAG = 9            # Loose-Aggressive (dangerous player)
 
 
 @dataclass
@@ -201,6 +208,11 @@ class SklanskyStrategy(BasePokerStrategy):
         PlayerType.AGGRESSIVE: 7,    # Groups 1-7
         PlayerType.BLUFFING: 8,      # Groups 1-8 + sometimes bluff
         PlayerType.DECEPTIVE: 5,     # Like regular but traps
+        PlayerType.MANIAC: 9,        # Plays almost any hand
+        PlayerType.ROCK: 2,          # Only best hands (groups 1-2)
+        PlayerType.CALLING_STATION: 8, # Wide range but passive
+        PlayerType.TAG: 4,           # Tight range but aggressive
+        PlayerType.LAG: 7,           # Loose but aggressive
     }
     
     def __init__(self, player_type: PlayerType):
@@ -329,6 +341,11 @@ class ChenStrategy(BasePokerStrategy):
         PlayerType.AGGRESSIVE: 5,     # Playable hands
         PlayerType.BLUFFING: 3,       # Many hands + bluffs
         PlayerType.DECEPTIVE: 7,      # Like regular but traps
+        PlayerType.MANIAC: 0,         # Plays everything
+        PlayerType.ROCK: 12,          # Very high threshold
+        PlayerType.CALLING_STATION: 2, # Low threshold, calls a lot
+        PlayerType.TAG: 9,            # Tight but aggressive
+        PlayerType.LAG: 5,            # Loose but aggressive
     }
     
     def __init__(self, player_type: PlayerType):
